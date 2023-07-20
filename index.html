@@ -94,7 +94,7 @@
             formGroupSelector: '.form-group',
             errorSelector: '.form-message',
             rules: [
-              // Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
+              Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
               // Validator.isRequired('#email'),
               // Validator.isEmail('#email'),
               // Validator.minLength('#password', 6),
@@ -102,7 +102,7 @@
               // Validator.isConfirmed('#password_confirmation', function () {
               //   return document.querySelector('#form-1 #password').value;
               // }, 'Mật khẩu nhập lại không chính xác'),
-              Validator.isRequired('input[name="gender"]'),
+              // Validator.isRequired('input[name="gender"]'),
 
             ],
             onSubmit: function (data) {
@@ -129,5 +129,6 @@
   
       </script>
       <script src="./main.js"></script>
+      <!-- <script src="./main2.js"></script> -->
 </body>
 </html>
