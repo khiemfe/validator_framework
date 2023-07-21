@@ -24,11 +24,11 @@ function Validator(options) {
         for (var i = 0; i < rules.length; ++i) {
             switch(inputElement.type) {
                 case 'radio':
-                // case 'checkbox':
+                case 'checkbox':
                     errorMessage = rules[i](formElement.querySelector(rule.selector + ':checked'))
                     break;
                 default: 
-                    errorMessage = rules[i](inputElement.value)
+                    errorMessage = rules[i](inputElement.value) //rules[i] giờ như 1 func truyền tham số inputElement.value vào, như func của test bên dưới
             }
             
             if (errorMessage) break;
@@ -68,6 +68,8 @@ function Validator(options) {
                 }
             })
         })
+        console.log(selectorRules)
+
         
         formElement.onsubmit = function(e) {
             e.preventDefault();
@@ -79,17 +81,16 @@ function Validator(options) {
                     isFormValid = false
                 }
             })
+            console.log(isFormValid)
             if(isFormValid) {
                 if (typeof options.onSubmit === 'function') {
                     var enableInputs = formElement.querySelectorAll('[name]')
                     var formValues = Array.from(enableInputs).reduce(function (values, input) {
-
                         switch(input.type) {
                             case 'radio':
                                 values[input.name] = formElement.querySelector('input[name=' + input.name + ']:checked').value
                                 break
                             case 'checkbox':
-                                
                                 if(input.matches(':checked')){
                                     if(!Array.isArray(values[input.name])) {
                                         values[input.name] = []

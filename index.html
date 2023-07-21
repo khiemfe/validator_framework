@@ -40,19 +40,38 @@
           </div>
 
           <div class="form-group">
-            <label for="password_confirmation" class="form-label">Gioi tinh</label>
+            <label for="password_confirmation" class="form-label">Giới tính</label>
             <div style="display: flex; justify-content: space-between;">
               <div>
                 Nam
-                <input name="gender" type="checkbox" value="male" class="form-control">
+                <input name="gender" type="radio" value="male" class="form-control">
               </div>
               <div>
-                Nu
-                <input name="gender" type="checkbox" value="female" class="form-control">
+                Nữ
+                <input name="gender" type="radio" value="female" class="form-control">
               </div>
               <div>
-                Khac
-                <input name="gender" type="checkbox" value="orther" class="form-control">
+                Khác
+                <input name="gender" type="radio" value="orther" class="form-control">
+              </div>
+            </div>
+            <span class="form-message"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="password_confirmation" class="form-label">Sở thích</label>
+            <div style="display: flex; justify-content: space-between;">
+              <div>
+                Đá bóng
+                <input name="gender2" type="checkbox" value="DaBong" class="form-control">
+              </div>
+              <div>
+                Bóng chuyền
+                <input name="gender2" type="checkbox" value="BongChuyen" class="form-control">
+              </div>
+              <div>
+                Khác
+                <input name="gender2" type="checkbox" value="orther" class="form-control">
               </div>
             </div>
             <span class="form-message"></span>
@@ -95,15 +114,15 @@
             errorSelector: '.form-message',
             rules: [
               Validator.isRequired('#fullname', 'Vui lòng nhập tên đầy đủ của bạn'),
-              // Validator.isRequired('#email'),
-              // Validator.isEmail('#email'),
-              // Validator.minLength('#password', 6),
-              // Validator.isRequired('#password_confirmation'),
-              // Validator.isConfirmed('#password_confirmation', function () {
-              //   return document.querySelector('#form-1 #password').value;
-              // }, 'Mật khẩu nhập lại không chính xác'),
-              // Validator.isRequired('input[name="gender"]'),
-
+              Validator.isRequired('#email'),
+              Validator.isEmail('#email'),
+              Validator.minLength('#password', 6),
+              Validator.isRequired('#password_confirmation'),
+              Validator.isConfirmed('#password_confirmation', function () {
+                return document.querySelector('#form-1 #password').value;
+              }, 'Mật khẩu nhập lại không chính xác'),
+              Validator.isRequired('input[name="gender"]'),
+              Validator.isRequired('input[name="gender2"]')
             ],
             onSubmit: function (data) {
               // Call API
